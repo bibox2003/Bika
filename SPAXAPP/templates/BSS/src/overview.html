@@ -1,0 +1,707 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bika</title>
+    
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/ionicons/dist/css/ionicons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.addons.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="{% static 'assets/css/shared/style.css' %}">
+        <!-- endinject -->
+        <!-- Layout styles -->
+        <link rel="stylesheet" href="{% static 'assets/css/demo_1/style.css' %}">
+        <!-- End Layout styles -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+   
+    
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+          <a class="navbar-brand brand-logo" href="index.html">
+            <img src="{% static 'assets/images/bss2.png' %}" alt="logo" /> </a>
+          
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+         
+          <form class="ml-auto search-form d-none d-md-block" action="#">
+            <div class="form-group">
+              <input type="search" class="form-control" placeholder="Search Here">
+            </div>
+          </form>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count">7</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                <a class="dropdown-item py-3">
+                  <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+                  <span class="badge badge-pill badge-primary float-right">View all</span>
+                </a>
+               
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
+                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="{% static 'assets/images/faces/face1.jpg' %}" alt="image" class="img-sm profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
+                    <p class="font-weight-light small-text"> The meeting is cancelled </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-email-outline"></i>
+                <span class="count bg-success">3</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
+                <a class="dropdown-item py-3 border-bottom">
+                  <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
+                  <span class="badge badge-pill badge-primary float-right">View all</span>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-alert m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
+                    <p class="font-weight-light small-text mb-0"> Just now </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-settings m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
+                    <p class="font-weight-light small-text mb-0"> Private message </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item py-3">
+                  <div class="preview-thumbnail">
+                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
+                    <p class="font-weight-light small-text mb-0"> 2 days ago </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="{% static 'assets/images/faces/face8.jpg' %}" alt="Profile image"> </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                    <div class="dropdown-header text-center">
+                        <img class="img-md rounded-circle" src="{% static 'assets/images/faces/face8.jpg' %}" alt="Profile image">
+                 
+                
+                  <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
+                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                </div>
+                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
+                <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
+                <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
+                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
+                <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+             
+              <li class="nav-item nav-category">Main Menu</li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index1' %}">
+                  <i class="menu-icon typcn typcn-document-text"></i>
+                  <span class="menu-title">Dashboard</span>
+                </a>
+              </li>
+              
+           
+              
+               
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">
+                  <i class="menu-icon typcn typcn-shopping-bag"></i>
+                  <span class="menu-title">Register</span>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'chartjs' %}">
+                  <i class="menu-icon typcn typcn-th-large-outline"></i>
+                  <span class="menu-title">Charts</span>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'overview' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">Overview</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'product_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">product</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_product' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">Add product</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_store' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">Add store</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'store_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">store</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'inventory_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">inventory</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'expired_product_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">expiredproductlist</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'customer_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">customer list</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sales_invoice_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">sales_invoice_list</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'purchase_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">purchase</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'order_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">order</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'order_item_list' %}">
+                  <i class="menu-icon typcn typcn-bell"></i>
+                  <span class="menu-title">order item</span>
+                </a>
+              </li>
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <i class="menu-icon typcn typcn-document-add"></i>
+                <span class="menu-title">User Pages</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> landing Page </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"> Login </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}"> Register </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Expired Products</h4>
+<p class="card-description"> Add class <code>.table-hover</code> </p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Expired ProductID</th>
+      <th>Product</th>
+      <th>Expiry Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Maize</td>
+      <td>12 May 2017</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Beans</td>
+      <td>15 May 2017</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Cassava</td>
+      <td>14 May 2017</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Potatoes</td>
+      <td>16 May 2017</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Bananas</td>
+      <td>20 May 2017</td>
+    </tr>
+  </tbody>
+</table>
+
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Store</h4>
+                    <p class="card-description"> Add class <code>.table-striped</code> </p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>StoreID</th>
+                          <th>Name</th>
+                          <th>Location</th>
+                          <th>Contact Info</th>
+                          <th>Products</th>
+                          <th>Sensors</th>
+                          <th>Coordinates</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Herman Beck</td>
+                          <td>Gasabo</td>
+                          <td>contact1@example.com</td>
+                          <td>Maize</td>
+                          <td>Sensor 1</td>
+                          <td>-1.937, 30.043</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Messsy Adam</td>
+                          <td>Nyarugenge</td>
+                          <td>contact2@example.com</td>
+                          <td>Beans</td>
+                          <td>Sensor 2</td>
+                          <td>-1.938, 30.042</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>John Richards</td>
+                          <td>Kicukiro</td>
+                          <td>contact3@example.com</td>
+                          <td>Cassava</td>
+                          <td>Sensor 3</td>
+                          <td>-1.939, 30.041</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Peter Meggik</td>
+                          <td>Rubavu</td>
+                          <td>contact4@example.com</td>
+                          <td>Potatoes</td>
+                          <td>Sensor 4</td>
+                          <td>-1.940, 30.040</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Edward</td>
+                          <td>Karongi</td>
+                          <td>contact5@example.com</td>
+                          <td>Bananas</td>
+                          <td>Sensor 5</td>
+                          <td>-1.941, 30.039</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>John Doe</td>
+                          <td>Ngororero</td>
+                          <td>contact6@example.com</td>
+                          <td>Sorghum</td>
+                          <td>Sensor 6</td>
+                          <td>-1.942, 30.038</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>Henry Tom</td>
+                          <td>Nyabihu</td>
+                          <td>contact7@example.com</td>
+                          <td>Tea</td>
+                          <td>Sensor 7</td>
+                          <td>-1.943, 30.037</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User</h4>
+                    <p class="card-description"> Add class <code>.table-striped</code> </p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>UserID</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Gender</th>
+                          <th>Role</th>
+                          <th>Address</th>
+                          <th>City</th>
+                          <th>State</th>
+                          <th>Country</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Herman</td>
+                          <td>Beck</td>
+                          <td>Male</td>
+                          <td>Admin</td>
+                          <td>123 Main St</td>
+                          <td>Gasabo</td>
+                          <td>Kigali</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Messsy</td>
+                          <td>Adam</td>
+                          <td>Male</td>
+                          <td>User</td>
+                          <td>456 Oak St</td>
+                          <td>Nyarugenge</td>
+                          <td>Kigali</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>John</td>
+                          <td>Richards</td>
+                          <td>Male</td>
+                          <td>Admin</td>
+                          <td>789 Pine St</td>
+                          <td>Kicukiro</td>
+                          <td>Kigali</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Peter</td>
+                          <td>Meggik</td>
+                          <td>Male</td>
+                          <td>User</td>
+                          <td>101 Maple St</td>
+                          <td>Rubavu</td>
+                          <td>Western</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Edward</td>
+                          <td></td>
+                          <td>Male</td>
+                          <td>Admin</td>
+                          <td>202 Cedar St</td>
+                          <td>Karongi</td>
+                          <td>Western</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>Male</td>
+                          <td>User</td>
+                          <td>303 Birch St</td>
+                          <td>Ngororero</td>
+                          <td>Western</td>
+                          <td>Rwanda</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>Henry</td>
+                          <td>Tom</td>
+                          <td>Male</td>
+                          <td>Admin</td>
+                          <td>404 Walnut St</td>
+                          <td>Nyabihu</td>
+                          <td>Western</td>
+                          <td>Rwanda</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                </div>
+              </div>    
+
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Product</h4>
+                    <p class="card-description"> Add class <code>.table-bordered</code> </p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ProductID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Inventory Count</th>
+                                <th>Serial No.</th>
+                                <th>Date Added</th>
+                                <th>Expiry Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                            <tr>
+                                <td>{{ product.product_id }}</td>
+                                <td>{{ product.name }}</td>
+                                <td>RWF {{ product.price }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>{{ product.inventory_count }}</td>
+                                <td>{{ product.serial_no }}</td>
+                                <td>{{ product.date_added }}</td>
+                                <td>{{ product.expiry_date }}</td>
+                                <td>
+                                    <a href="#"><i class="mdi mdi-pencil" style="color: blue;"></i></a>
+                                    <a href="#"><i class="mdi mdi-delete" style="color: red;"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+              </div>
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Order</h4>
+<p class="card-description"> Add class <code>.table</code> </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>OrderID</th>
+      <th>Customer</th>
+      <th>Order Date</th>
+      <th>Total Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Jacob</td>
+      <td>12 May 2017</td>
+      <td>$200</td>
+      <td><label class="badge badge-danger">Pending</label></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Messsy</td>
+      <td>15 May 2017</td>
+      <td>$450</td>
+      <td><label class="badge badge-warning">In progress</label></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+      <td>14 May 2017</td>
+      <td>$300</td>
+      <td><label class="badge badge-info">Fixed</label></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Peter</td>
+      <td>16 May 2017</td>
+      <td>$150</td>
+      <td><label class="badge badge-success">Completed</label></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Dave</td>
+      <td>20 May 2017</td>
+      <td>$500</td>
+      <td><label class="badge badge-warning">In progress</label></td>
+    </tr>
+  </tbody>
+</table>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Order Item</h4>
+                    <p class="card-description"> Add class <code>.table-hover</code> </p>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Order ItemID</th>
+                          <th>Order</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Jacob</td>
+                          <td>2</td>
+                          <td>RWF 28,760</td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Messsy</td>
+                          <td>3</td>
+                          <td>RWF 21,060</td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>John</td>
+                          <td>1</td>
+                          <td>RWF 35,000</td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Peter</td>
+                          <td>5</td>
+                          <td>RWF 82,000</td>
+                          <td><label class="badge badge-success">Completed</label></td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Dave</td>
+                          <td>4</td>
+                          <td>RWF 98,050</td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+             
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    
+        <!-- Your content here -->
+        <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+        <script src="{% static 'assets/vendors/js/vendor.bundle.addons.js' %}"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page-->
+        <!-- End plugin js for this page-->
+        <!-- inject:js -->
+        <script src="{% static 'assets/js/shared/off-canvas.js' %}"></script>
+        <script src="{% static 'assets/js/shared/misc.js' %}"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script src="{% static 'assets/js/demo_1/dashboard.js' %}"></script>
+        <!-- End custom js for this page-->
+        <script src="{% static 'assets/js/shared/jquery.cookie.js' %}" type="text/javascript"></script>
+    
+    
+  </body>
+</html>

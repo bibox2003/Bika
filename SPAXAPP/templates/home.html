@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Page</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .bio-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 60%;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="bio-container">
+        <img src="{% static 'images/banner-ad-1.jpg' %}" alt="Profile Picture" class="profile-pic">
+        <h1>Abelison</h1>
+        <p>Welcome to my bio page! I am a passionate developer with a love for creating elegant web solutions. With a background in computer science and a keen eye for design, I strive to deliver user-friendly and visually appealing websites. When I'm not coding, you can find me exploring nature, reading books, or experimenting with new recipes in the kitchen. Let's connect and build something amazing together!</p>
+        <p>
+            <a href="{% url 'index' %}">HOME 💒</a>
+        </p>
+    </div>
+</body>
+</html>
